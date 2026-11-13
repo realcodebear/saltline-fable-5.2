@@ -1,0 +1,15 @@
+{
+  "port": 8790,
+  "host": "0.0.0.0",
+  "siteName": "提示词市集",
+  "allowOrigin": "*",
+  "uploadMaxMB": 3,
+  "admin": {
+    "username": "admin",
+    "password": ""
+  },
+  "webhook": {
+    "url": ""
+  },
+  "secret": ""
+}
