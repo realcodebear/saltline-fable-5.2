@@ -3,7 +3,8 @@
 <title>Saltline</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Barlow+Condensed:wght@400;500;600&display=swap">
+<!-- 国内网络下面向境外字体服务的请求会阻塞首屏；改为异步加载，失败时回退到系统字体栈 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Barlow+Condensed:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
 <style>
 /* game/ui.css — owned by the Game agent. One deliberate dark look (a game viewport): port-authority signage meets a film title card.
    Sections: tokens · page + boot · HUD · radio · touch controls · menus · panel · motion preferences. */
@@ -12,9 +13,9 @@
   --ink: #0b0d0f; --ink-2: #14181b; --bone: #e8e4da; --bone-dim: rgba(232, 228, 218, .64); --bone-faint: rgba(232, 228, 218, .24);
   --signal: #ffb347; --signal-hot: #ffc977; --rust: #d2622a; --steel: #8d9aa3; --alarm: #ff5a40;
   --line: rgba(232, 228, 218, .2); --plate: rgba(11, 13, 15, .6); --plate-solid: rgba(11, 13, 15, .9);
-  --f-display: 'Big Shoulders Display', 'Impact', 'Haettenschweiler', 'Arial Narrow', sans-serif;
-  --f-label: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
-  --f-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --f-display: 'Big Shoulders Display', 'Impact', 'Haettenschweiler', 'Arial Narrow', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --f-label: 'Barlow Condensed', 'Arial Narrow', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', system-ui, sans-serif;
+  --f-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Microsoft YaHei', monospace;
   --sat: env(safe-area-inset-top, 0px); --sab: env(safe-area-inset-bottom, 0px);
   --sal: env(safe-area-inset-left, 0px); --sar: env(safe-area-inset-right, 0px);
   --gl: max(16px, env(safe-area-inset-left, 0px)); --gr: max(16px, env(safe-area-inset-right, 0px));
@@ -231,6 +232,9 @@ body { background: var(--ink); color: var(--bone); overflow: hidden; font-family
 .m-actions.col .btn { text-align: left; padding-left: 18px; }
 .menu button:focus-visible, .menu input:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
 .btn.primary:focus-visible { outline-color: var(--bone); }
+/* prompt-market entry on the title screen (static board lives in /market) */
+.m-actions a.btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; text-decoration: none; }
+.m-actions a.btn.market .mk-ar { font-family: var(--f-mono); font-size: 11px; color: var(--signal); margin-top: -1px; letter-spacing: 0; }
 
 /* controls at a glance on the title (wide screens; the Controls button covers the rest) */
 .m-legend { display: none; flex: none; text-align: right; text-shadow: var(--shadow); padding-bottom: 2px; }
@@ -6109,6 +6113,7 @@ vObjP = position; vONrm = normal; vWNrm = normalize(mat3(modelMatrix) * normal);
           <button class="btn primary" data-act="deploy">Deploy</button>
           <button class="btn" data-act="settings">Settings</button>
           <button class="btn m-only-narrow" data-act="controls">Controls</button>
+          <a class="btn market" href="https://prompt.mengbot.com.cn/" target="_blank" rel="noopener" title="MengBot 提示词商城 · 提示词作品与在线试玩">提示词商城 <span class="mk-ar">&#8599;</span></a>
         </div>
         <p class="m-note">Every surface, machine and sound is generated in your browser. Nothing is downloaded.</p>
       </div>

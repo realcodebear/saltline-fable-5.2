@@ -1,10 +1,12 @@
 # Saltline — Fable 5.2 FPS
 
-A small browser first-person shooter: one level in a rainy container port. Cut three uplink relays while drones ("Gulls") and robot dogs ("Hounds") hunt you.
-<img width="1685" height="906" alt="image" src="https://github.com/user-attachments/assets/8dd32149-90f4-4d69-a573-4411a49a9ba9" />
+一条提示词产出的雨夜港口第一人称射击游戏：切断三条上行链路，然后活着上船。
 
+这不是一个「项目」，只是一件作品：游戏本体来自一次 Claude 的 run，本仓库是它的可本地运行镜像。
+收录这件作品的提示词商城在 MengBot 侧：**https://prompt.mengbot.com.cn/**（条目 PM-01）。
 
 ## Demo
+
 https://realcodebear.github.io/saltline-fable-5.2/
 
 ## Where it comes from
@@ -20,6 +22,8 @@ All credit for the game goes to its original author. This repo is a mirror so pe
 
 Nothing in the game code. The claude.ai frame-runtime scripts were removed from `<head>`, and a doctype, charset and viewport tag were added so the file runs as a plain web page.
 
+The only addition is a title-screen link to the prompt mall, plus two CSS rules and non-blocking font loading.
+
 ## Run it
 
 ```sh
@@ -29,3 +33,8 @@ python3 -m http.server 8731
 Then open http://localhost:8731 and click the page to capture the mouse and start the sound.
 
 The whole game is one file, `index.html` (~1.4 MB). It bundles three.js and loads fonts from Google Fonts. There are no other outside assets.
+
+## 提示词商城 / Prompt Mall
+
+商城的提示词、署名、审核与投稿都在 MengBot 项目里：`mengbot/prompt-mall`（`web/` + `server/`）。
+本仓库只保留游戏本体；商城的任何改动都不在这里。
